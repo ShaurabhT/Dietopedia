@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Calculations
 from django.contrib.auth.models import User
 from Login.models import Customers
+from django.views.generic import View
 
 
 
@@ -181,3 +182,4 @@ def Report(request):
 def Logout(request):
     auth.logout(request)
     return redirect("/")
+

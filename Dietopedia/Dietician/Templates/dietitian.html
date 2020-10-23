@@ -48,6 +48,7 @@
 					<div class="logo ">
 						<a href="index.html">
 							<h1 style=" font-size:300% ; color:white ">Dietopedia</h1>
+							
 						</a>
 					</div>
 
@@ -76,18 +77,16 @@
 					<!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
 					
 					<li class="has-sub root-level">
-						<a href="../calculator/History">
+						<a href="../Dietitian/requests">
 							<i class="entypo-layout"></i>
-							<span class="title">C</span>
+							<span class="title">Customers</span>
 						</a>
 
-					</li>
-
-
+					</li>	
 					<li class="has-sub root-level">
 						<a href="../Recomendation">
 							<i class="entypo-newspaper"></i>
-							<span class="title">Dish Recomendation</span>
+							<span class="title">Testing</span>
 						</a>
 
 					</li>
@@ -130,7 +129,7 @@
 							<!-- add class "pull-right" if you want to place this from right -->
 
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<img class="img-circle" src="/images/9.png" width="44">
+								<img class="img-circle" src="{{user.customers.ProfilePic.url}}" width="44">
 
 								<b>Hello ,{{user.username}}</b>
 							</a>
@@ -245,7 +244,7 @@
 											<div class="col-lg-3 order-lg-2">
 												<div class="card-profile-image">
 													<a href="#">
-														<img src="/images/9.png" class="rounded-circle">
+														<img src="{{user.customers.ProfilePic.url}}" class="rounded-circle">
 													</a>
 												</div>
 											</div>
@@ -285,7 +284,7 @@
 													<i class="ni location_pin mr-2"></i>
 												</div>
 												<div class="h5 mt-4">
-													<i class="ni business_briefcase-24 mr-2"></i>Engineer
+													<i class="ni business_briefcase-24 mr-2"></i>{{user.groups.all	}}
 												</div>
 												<div>
 													<i class="ni education_hat mr-2"></i>University of Computer Science
