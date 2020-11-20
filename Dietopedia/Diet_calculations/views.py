@@ -15,14 +15,15 @@ def BMR(request):
         height =request.POST['height']
         weight=request.POST['weight']
         age =request.POST['age']
-        Gender=request.POST['gender']
+        user = request.user
+        Gender= user.customers.Gender
         exer =request.POST['exercise']
         if height =='' :
             if weight =='':
                 if age =='':
                  return render(request,"Diet_calculations/BMR.html")
         else:
-            if Gender == '1' :
+            if Gender == 'Male' :
                 bmr = 66 + ( 6.23 * float(weight)) + ( 12.7 *float(height)  ) - ( 6.8 * float(age)  )
                 if (exer == '1'):
                     bdiwithexercise= bmr*1.2
@@ -87,10 +88,9 @@ def BDI(request):
         weight=request.POST['weight']
         waist=request.POST['waist']
         butt=request.POST['butt']
-        testing="BDI"
-        print(heightfet)
-        if (int(heightfet)<1):
-            messages.info(request,"Incorrect value2")
+
+        if heightfet == '':
+            messages.info(request,"Incorrect value")
             return render(request,"Diet_calculations/BDI.html")
         else:
             if (int(heightin)>11):

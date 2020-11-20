@@ -11,11 +11,12 @@
     <link href="{% static '/Landing/ndini.css' %}" rel="stylesheet" type="text/css" />
   </head>
   <body>
+  <script src="{% static 'landing.js' %}"></script>
     <div class="haree">
       
-      <a id="lahai" href="../log/signup" style="cursor: pointer;color: white;">Sign Up</a>
+      <a id="lahai" href="../log/signup" style="cursor: pointer;color: white;margin-left: -14%;">Sign Up</a>
       
-      <a id="khai" href="../log/signin" style="cursor: pointer;color: white;">Sign In</a>
+      <a id="khai" href="../log/signin" style="cursor: pointer;color: white;margin-left: -13%;">Sign In</a>
       
     </div>
    
@@ -61,16 +62,40 @@
             <div class="cube4">
               <p>5'4</p>
             </div> -->
+            <script type="text/javascript">
+            function BMR() {
+              var bmr;
+              var h=document.getElementById('heig').value;
+              var w=document.getElementById('weiko').value;
+              var a=document.getElementById('ageee').value;
+              var g=document.getElementById('gen').value;
+              
+              if (g=="1"){
+               bmr =66+(6.23*w)+(12.7*h)-(6.8*a);
+              
+              }
+              else if (g=="2"){
+                 bmr =655+(4.35*w)+(4.7*h)-(4.7*a);
+                 
+              }
+        
+                var bmro=bmr.toFixed(2);
+              document.getElementById("result").innerHTML="Your BMR is " + bmro;
+          
+            }
+           
+          </script>
+          
             <div class="lalaa">
-              <ul>GENDER</ul>
-              <input type="checkbox" id="gen">
-                <label class="blen" for="gen">
-                  <p>MALE</p>
-                </label>
-                <label class="blen2" for="gen">
-                  <div class="lee"></div>
-                  <p id="b2">FEMALE</p>
-                </label>
+              <ul class="todo-list">
+              <select class="form-control inp" id="gender" name='gen'>
+                  <option id="gen" value="1" style="color:black;">Male</option>
+                  <option id="gen" value="2" style="color:black;">Female</option>
+              </select>
+
+          </ul>
+
+            </ul>
               
             </div>
             
@@ -80,19 +105,49 @@
             <form action="" class="fumm"> 
               <div>
                 <label for="">AGE</label>
-                <input type="text" class="ageee">
+                <input type="text" class ="ageee" id="ageee">
              </div>
               <div>
                 <label for="">WEIGHT</label>
-                <input type="text" class="weiko">
+                <input type="text" class="weiko"  id="weiko">
 
               </div>
               <div>
                 <label for="">HEIGHT</label>
-                <input type="text" class="heig">
+                <input type="text" class="heig" id="heig">
+               
               </div>
               
-              <button class="butto">CALCULATE</button>
+              
+              <!-- Button trigger modal -->
+              <button type="button" onclick="BMR()" class="btn btn-primary" >
+                
+                Calculate BMR
+                
+              </button>
+              <p id = "result"></p>
+              
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body"></div>
+                
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
 
             </form>
             

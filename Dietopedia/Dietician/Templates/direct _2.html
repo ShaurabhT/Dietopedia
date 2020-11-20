@@ -48,7 +48,6 @@
 					<div class="logo ">
 						<a href="index.html">
 							<h1 style=" font-size:300% ; color:white ">Dietopedia</h1>
-							
 						</a>
 					</div>
 
@@ -75,24 +74,26 @@
 				<ul id="main-menu" class="main-menu" style="">
 					<!-- add class "multiple-expanded" to allow multiple submenus to open -->
 					<!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-					
-					<li class="has-sub root-level">
-						<a href="../Dietitian/inbox">
+
+					<li class="active  root-level">
+						<a href="/Dietitian/inbox">
 							<i class="entypo-layout"></i>
 							<span class="title">Chat</span>
-						</a>
-
-					</li>	
-					<li class="has-sub root-level">
-						<a href="../Recomendation">
-							<i class="entypo-newspaper"></i>
-							<span class="title">Testing</span>
 						</a>
 
 					</li>
 
 
-					<li class="active root-level">
+					<li class="has-sub root-level">
+						<a href="../Recomendation">
+							<i class="entypo-newspaper"></i>
+							<span class="title">testing</span>
+						</a>
+
+					</li>
+
+
+					<li class="has-sub  root-level">
 						<a href="../profile">
 							<i class="entypo-newspaper"></i>
 							<span class="title">Profile</span>
@@ -101,7 +102,7 @@
 					</li>
 
 					<li class="has-sub root-level">
-						<a href="Logout">
+						<a href="../Logout">
 							<i class="entypo-doc-text"></i>
 							<span class="title">Log Out</span>
 						</a>
@@ -141,9 +142,9 @@
 
 								<!-- Profile sub-links -->
 								<li>
-									<a href="extra-timeline.html">
+									<a href="../Dietitian">
 										<i class="entypo-user"></i>
-										Edit Profile
+										Profile
 									</a>
 								</li>
 
@@ -179,7 +180,7 @@
 			<hr>
 
 
-			<div class="profile-env">
+			<div class="profile-env" style="margin-left: 4%;">
 				<header class="row" style="background-color: #4b97b582;margin-left: -5%;">
 
 					<div class="main-content">
@@ -235,194 +236,158 @@
 						</nav>
 						<!-- Header -->
 
-						<!-- Page content -->
-						<div class="container-fluid mt--7">
-							<div class="row">
-								<div class="col-xl-4 order-xl-2 mb-5 mb-xl-0" style="margin-left: -14%;margin-top: 5%;">
-									<div class="card card-profile shadow" style="width: 65%;margin-left: 36%;">
-										<div class="row justify-content-center">
-											<div class="col-lg-3 order-lg-2">
-												<div class="card-profile-image">
-													<a href="#">
-														<img src="{{user.customers.ProfilePic.url}}" class="rounded-circle">
-													</a>
-												</div>
-											</div>
-										</div>
-										<div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-											<div class="d-flex justify-content-between">
-												<a href="#" class="btn btn-sm btn-info mr-4">Connect</a>
-												<a href="#" class="btn btn-sm btn-default float-right">Message</a>
-											</div>
-										</div>
-										<div class="card-body pt-0 pt-md-4">
-											<div class="row">
-												<div class="col">
-													<div
-														class="card-profile-stats d-flex justify-content-center mt-md-5">
-														<div>
-															<span class="heading">22</span>
-															<span class="description">Friends</span>
-														</div>
-														<div>
-															<span class="heading">10</span>
-															<span class="description">Plans Selected</span>
-														</div>
-														<div>
-															<span class="heading">89</span>
-															<span class="description">Comments</span>
-														</div>
+						<h2 style="font-size: 22px;margin-left: 75%;padding-bottom: 2%;margin-top: -3%;">DIETICIANS
+							AVAILABLE</h2>
+
+						{% block content %}
+
+						<div class="columns is-mobile">
+
+
+							<div class="column is-one-quarter">
+								<aside class="menu">
+									<h1 class="title is-2">
+										New Messages
+									</h1>
+
+									<ul style="overflow-y: scroll; height: 500px" class="menu-list">
+
+										{% for message in messages %}
+
+										<a class="{% if active_direct == message.user.username %}is-active{% endif %}"
+											href="{% url 'directs' message.user.username %}">
+											<div class="box">
+												<article class="media">
+													<div class="media-left">
+														<figure class="image is-64x64">
+															{% if message.user.profile.picture %}
+															<img src="{{ message.user.profile.picture.url }}"
+																alt="Placeholder image">
+															{% else %}
+															<img src="https://bulma.io/images/placeholders/96x96.png"
+																alt="Placeholder image">
+															{% endif %}
+														</figure>
 													</div>
+													<div class="media-content">
+
+														<div class="content">
+															<p>
+																<strong>{{ message.user.profile.first_name }}
+																	{{ message.user.profile.last_name }}</strong>
+																<small>@{{ message.user.username }}</small>
+															</p>
+														</div>
+
+														<div class="content">
+															{% if message.unread %}
+															<p style="font-weight: bold; color: red;">
+																<i class="material-icons">mark_chat_unread</i>
+																{{ message.unread }}
+															</p>
+															{% endif %}
+														</div>
+
+													</div>
+												</article>
+											</div>
+										</a>
+										</br>
+
+										{% endfor %}
+										<a href="/Dietitian/new/" class="button is-success">New message</a>
+									</ul>
+								</aside>
+								<br>
+
+
+							</div>
+
+							<div class="column">
+
+								<div style="overflow-y: scroll; height: 500px;margin-left: 23%;margin-top: -42%;">
+
+									{% for direct in directs %}
+
+									<div class="box">
+										<article class="media">
+											<div class="media-left">
+											</div>
+											<div class="media-content">
+												<div class="content">
+													<p>
+														<strong>{{ direct.sender.profile.first_name }}
+															{{ direct.sender.profile.last_name }}</strong>
+														<small>@{{ direct.sender.username }}</small>
+													</p>
+													<a style="margin-left: 112%;">{{ direct.body }} </a>
+
 												</div>
 											</div>
-											<div class="text-center">
-												<h3>
-													{{user.username}}<span class="font-weight-light">,
-														{{user.customers.Age}}</span>
-												</h3>
-												<div class="h5 font-weight-300">
-													<i class="ni location_pin mr-2"></i>
-												</div>
-												<div class="h5 mt-4">
-													<i class="ni business_briefcase-24 mr-2"></i>Dietitian
-												</div>
-												<div>
-													<i class="ni education_hat mr-2"></i>University of Computer Science
-												</div>
-												<hr class="my-4">
-												<p>writing Bio here pending .</p>
-												<a href="#">Show more</a>
-											</div>
-										</div>
+										</article>
 									</div>
+									{% endfor %}
+
+
 								</div>
-								<div class="col-xl-8 order-xl-1" style="margin-left: -1%;">
-									<div class="card bg-secondary shadow">
-										<div class="card-header bg-white border-0">
-											<div class="row align-items-center">
-												<div class="col-8">
-													<h3 class="mb-0">My account</h3>
-												</div>
-												<div class="col-4 text-right">
-													<a href="#!" class="btn btn-sm btn-primary">Settings</a>
-												</div>
+
+
+								<form role="form" method="POST" action="{% url 'send_direct' %}">
+									{% csrf_token %}
+									<article class="media" style="margin-left: 60%;margin-top: -28%;">
+										<figure class="media-left">
+											<p class="image is-64x64">
+
+											</p>
+										</figure>
+										<div class="media-content">
+											<input type="hidden" name="to_user" value="{{ active_direct }}">
+											<div class="field">
+												<p class="control">
+													<textarea class="textarea" name="body"
+														placeholder="Add a comment..."></textarea>
+												</p>
 											</div>
+											<nav class="level">
+												<div class="level-left">
+													<div class="level-item">
+														<button type="submit" name="action" class="button is-info">Send
+															</buttom>
+													</div>
+												</div>
+											</nav>
 										</div>
-										<div class="card-body">
-											<form>
-												<h6 class="heading-small text-muted mb-4">User information</h6>
-												<div class="pl-lg-4">
-													<div class="row">
-														<div class="col-lg-6">
-															<div class="form-group focused">
-																<label class="form-control-label"
-																	for="input-username">Username</label>
-																<input type="text" id="input-username"
-																	class="form-control form-control-alternative"
-																	placeholder="Username" value="{{user.username}}">
-															</div>
-														</div>
-														<div class="col-lg-6">
-															<div class="form-group">
-																<label class="form-control-label"
-																	for="input-email">Email address</label>
-																<input type="email" id="input-email"
-																	class="form-control form-control-alternative"
-																	placeholder="{{user.email}}">
-															</div>
-														</div>
-													</div>
-													<div class="row">
-														<div class="col-lg-6">
-															<div class="form-group focused">
-																<label class="form-control-label"
-																	for="input-first-name">First name</label>
-																<input type="text" id="input-first-name"
-																	class="form-control form-control-alternative"
-																	placeholder="First name"
-																	value="{{user.first_name}}">
-															</div>
-														</div>
-														<div class="col-lg-6">
-															<div class="form-group focused">
-																<label class="form-control-label"
-																	for="input-last-name">Last name</label>
-																<input type="text" id="input-last-name"
-																	class="form-control form-control-alternative"
-																	placeholder="Last name" value="{{user.last_name}}">
-															</div>
-														</div>
-													</div>
-												</div>
-												<hr class="my-4">
-												<!-- Address -->
-												<h6 class="heading-small text-muted mb-4">Contact information</h6>
-												<div class="pl-lg-4">
-													<div class="row">
-														<div class="col-md-12">
-															<div class="form-group focused">
-																<label class="form-control-label"
-																	for="input-address">Address</label>
-																<input id="input-address"
-																	class="form-control form-control-alternative"
-																	placeholder="Home Address" value="Nepal"
-																	type="text">
-															</div>
-														</div>
-													</div>
-													<div class="row">
-														<div class="col-lg-4">
-															<div class="form-group focused">
-																<label class="form-control-label"
-																	for="input-city">City</label>
-																<input type="text" id="input-city"
-																	class="form-control form-control-alternative"
-																	placeholder="City" value="Kathmandu">
-															</div>
-														</div>
-														<div class="col-lg-4">
-															<div class="form-group focused">
-																<label class="form-control-label"
-																	for="input-country">Country</label>
-																<input type="text" id="input-country"
-																	class="form-control form-control-alternative"
-																	placeholder="{{user.customers.Address}}"
-																	value="Nepal">
-															</div>
-														</div>
-														<div class="col-lg-4">
-															<div class="form-group">
-																<label class="form-control-label"
-																	for="input-country">Postal code</label>
-																<input type="number" id="input-postal-code"
-																	class="form-control form-control-alternative"
-																	placeholder="11460">
-															</div>
-														</div>
-													</div>
-												</div>
-												<hr class="my-4">
-												<!-- Description -->
-												<h6 class="heading-small text-muted mb-4">About me</h6>
-												<div class="pl-lg-4">
-													<div class="form-group focused">
-														<label>About Me</label>
-														<textarea rows="4" class="form-control form-control-alternative"
-															placeholder="A few words about you ...">Test</textarea>
-													</div>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
+									</article>
+								</form>
+
 							</div>
 						</div>
-					</div>
+
+						{% endblock %}
 
 
-					<!-- tye[[ensdkjans here]] -->
+						<!-- tye[[ensdkjans here]] -->
+						
+
+						<div class="box3" style="margin-top: -20%;">
+
+							{% for group in groups %}
+
+							<article class="media" style="background: #ec3032; margin-left: 72%;">
+								<a href="#" style="position: relative;" class="ui-draggable">
+
+									<p style="color: white; font-size: medium; margin-left: 85%;">{{ group.username }}
+									</p>
+									<p style="color: white; margin-left: 57%;width: 130%;">Last Login
+										:{{ group.last_login }}</p>
+
+								</a>
 
 
+							</article>
+
+							{% endfor %}
+						</div>
 
 
 
