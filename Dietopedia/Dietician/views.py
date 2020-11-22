@@ -32,8 +32,6 @@ def Inbox(request):
 	active_direct = None
 	directs = None
 	group=User.objects.filter(groups__name="Dietitians")
-
-
 	if messages:
 		message = messages[0]
 		active_direct = message['user'].username

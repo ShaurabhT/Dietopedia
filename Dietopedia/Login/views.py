@@ -27,18 +27,38 @@ def SignUp(request):
             else:
                 if dietitian =="Yes":
                     user=User.objects.create_user(username=username,first_name=First_Name,password=Password,email=email)
-                    user.groups.add(Group.objects.get(name='Dietitians'))
-                    user.save()
-                    newextended= Customers(Gender=Gender,Age=Age,user=user)
-                    newextended.save()
-                    return(redirect('/log/signin/'))
+                    if  User.objects.filter(groups__name="Dietitians").exists():
+                        user.groups.add(Group.objects.get(name='Dietitians'))
+                        user.save()
+                        newextended= Customers(Gender=Gender,Age=Age,user=user)
+                        newextended.save()
+                        return(redirect('/log/signin/'))
+                    else:
+                        Group.objects.get_or_create(name="Dietitians")
+                        user.groups.add(Group.objects.get(name='Dietitians'))
+                        user.save()
+                        newextended= Customers(Gender=Gender,Age=Age,user=user)
+                        newextended.save()
+                        return(redirect('/log/signin/'))
+                    
+                   
+                    
                 elif dietitian =="No":
                     user=User.objects.create_user(username=username,first_name=First_Name,password=Password,email=email)
-                    user.groups.add(Group.objects.get(name='Customers'))
-                    user.save()   
-                    newextended= Customers(Gender=Gender,Age=Age,user=user)
-                    newextended.save()
-                    return(redirect('/log/signin/'))
+                    if  User.objects.filter(groups__name="Customers").exists():
+                        user.groups.add(Group.objects.get(name='Customers'))
+                        user.save()   
+                        newextended= Customers(Gender=Gender,Age=Age,user=user)
+                        newextended.save()
+                        return(redirect('/log/signin/'))
+                    else:
+                        Group.objects.get_or_create(name="Customers")
+                        user.groups.add(Group.objects.get(name='Customers'))
+                        user.save()
+                        newextended= Customers(Gender=Gender,Age=Age,user=user)
+                        newextended.save()
+                        return(redirect('/log/signin/'))
+                    
         else:
             messages.info(request,"Password not matching")
             return(redirect('/log/signup/'))

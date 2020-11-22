@@ -78,7 +78,7 @@
               <p>
                 <strong>{{ direct.sender.profile.first_name }} {{ direct.sender.profile.last_name }}</strong>
                 <small>@{{ direct.sender.username }}</small> on:
-                <strong><small>{{ direct.Date|date:'N d  '}}</small></strong>
+                <strong><small>{{ direct.Date|date:' N d Y  '}}</small></strong>
               </p>
               {{ direct.body }}
             </div>

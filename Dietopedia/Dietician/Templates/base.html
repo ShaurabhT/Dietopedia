@@ -39,7 +39,8 @@
 
 <body class="page-body  skin-green loaded" data-url="http://neon.dev">
 
-  <div class="page-container sidebar-collapsed">
+  <div class="page-container sidebar-
+  lapsed">
     <!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 
 
@@ -82,7 +83,7 @@
           <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
 
           <li class="has-sub root-level">
-            <a href="../Dietitian/inbox">
+            <a href="../directs">
               <i class="entypo-layout"></i>
               <span class="title">Chat</span>
             </a>
@@ -106,7 +107,7 @@
           </li>
 
           <li class="has-sub root-level">
-            <a href="Logout">
+            <a href="../Logout">
               <i class="entypo-doc-text"></i>
               <span class="title">Log Out</span>
             </a>
@@ -235,6 +236,16 @@
         {% endblock %}
 
       </div>
+
+      {% for username in groups %}
+      <div class="content" style="margin-left: 86%;margin-top: -38%;">
+        <ul>
+          <small>{{username}}</small> on:
+          <strong><small> {{username.last_login}} </small></strong>
+        </ul>
+        
+      </div>
+      {% endfor %}
 
 
 
