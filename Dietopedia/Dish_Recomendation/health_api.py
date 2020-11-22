@@ -38,7 +38,6 @@ def get_result(url: str)->dict:
 
 
 def add_recipe(json:dict, cal_goal:int):
-    print(json['hits'])
     choice = random.randrange(0, len(json['hits']))
     r = Recipe(json['hits'][choice])
     

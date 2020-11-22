@@ -15,7 +15,6 @@ def shuffle_meals(saved_json, calorie_goal, meals = ["breakfast", "lunch", "dinn
 def generate_meals(calories: int):
     for meal in ["breakfast", "lunch", "dinner"]:
         url = create_url() 
-        print(url)
         json = get_result(url)
         print(json)
         json_saved[meal] = json    

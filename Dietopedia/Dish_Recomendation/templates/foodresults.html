@@ -1,62 +1,212 @@
-{% extends "base2.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block bigheading %}Your Meal Plan{% endblock %}
+<head>
 
-{% block maincontent %}
-<div class="row">
-	<div class="inside" style="flex-basis:65%;">
-	<div id="meal-header">Breakfast</div>
-	<a href="{{ breakfast.recipe_url }}"><div class="recipe-header">{{ breakfast.name }}</div></a>
-	<div id="indented">
-		<b>Calories</b>: {{ breakfast.calories }}<br>
-	{{ breakfast.protein }} g <b>Protein</b> / {{ breakfast.carbohydrates }} g <b>Carbs</b> / {{ breakfast.fat }} g <b>Fat</b><br>
-	<img src="{{ breakfast.image }}" style="max-height: 250px">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Neon Admin Panel" />
+	<meta name="author" content="" />
+	<title>Dietopedia</title>
+
+
+	<link rel="stylesheet"
+		href="{% static 'Website_all/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css' %}">
+	<link rel="stylesheet" href="{% static 'Website_all/assets/css/font-icons/entypo/css/entypo.css' %}">
+	<link rel="stylesheet" href="{% static '//fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic'%}">
+	<link rel="stylesheet" href="{% static 'Website_all/assets/css/bootstrap.css' %}">
+	<link rel="stylesheet" href="{% static 'Website_all/assets/css/neon-core.css' %}">
+	<link rel="stylesheet" href="{% static 'Website_all/assets/css/neon-theme.css' %}">
+	<link rel="stylesheet" href="{% static 'Website_all/assets/css/neon-forms.css' %}">
+	<link rel="stylesheet" href="{% static 'Website_all/assets/css/custom.css' %}">
+	<link rel="stylesheet" href="{% static 'Recomendation/navbar.css' %}">
+	<script src="{% static 'Website_all/assets/js/jquery-1.11.3.min.js' %}"></script>
+
+	<!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src={" % static 'https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js' %}"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+
+</head>
+{% load static %}
+
+
+<body class="page-body" data-url="{ % static 'http://neon.dev' %}">
+
+	<div class="page-container">
+		<!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+
+
+		<div class="main-content" style="margin-top: 0;position: initial; ">
+
+
+			<div class="row">
+
+				<!-- Raw Links -->
+				<div style="width: 102%;background-color: green;position: sticky;margin-top: -2%;margin-left: -1%;margin-bottom: -17px;height: -47%;margin-top: -2%;"
+					class="col-md-6 col-sm-4  hidden-xs">
+
+
+					<ul class="list-inline links-list pull-right">
+
+						<nav>
+							<div>
+
+
+								<a class="name" href="#">{{user.email}}</a>
+							</div>
+							<div class="box12" style="margin-top: 11px;">
+								<a class="firstline" href="./profile">Profile</a>
+								<a class="firstline" href="../calculator/BMR">Calculations</a>
+								<a class="firstline" href="Logout">Logout</a>
+							</div>
+							<div class="box12">
+								<div class="logo ">
+									<a href="BDI">
+										<p style="font-size: 440%;
+										color: white;
+										margin-left: -218%;" ,="">Dietopedia</p>
+									</a>
+								</div>
+
+								<div class="box3">
+
+								</div>
+								<div class="box4" style="margin-top: -10%;">
+									<a class="secondline" href="#">FILTERS</a>
+									
+									<a class="secondline" href="../Dietitian/inbox">Chat</a>
+								</div>
+
+							</div>
+						</nav>
+
+
+					</ul>
+
+				</div>
+
+			</div>
+
+			<hr />
+
+
+
+		</div>
+
+		<hr />
+
 	</div>
-	
-</div>
-	<div class="inside" style="flex:1">
-	<div id="meta-info">
-		<span class="smalltxt" style="text-align:left;"> {{ person.printableGender }} / {{ person.age }} years / {{ person.weight }} lbs / {{ person.height }} in / {{ person.printableActivityLevel }}</span>
-		<div class="bignumber">{{ totalCalories }}</div>
-		<div class="subnumber">Reccomended calories</div>
-		<div class="bignumber">{{ mealCalories }}</div>
-		<div class="subnumber">Calories for this meal plan</div>
+	<div class="fromapi" style="margin-top: 1%;margin-left: 2%;padding: 1%;">
 
-		<!-- <div class="button" onClick="window.location.reload()">Shuffle Results!</div> -->
-		<!-- <form action="" method="GET"> -->
+		{% block maincontent %}
+		<div class="row1" style="margin-top: -37%;">
+			<div class="inside" style="flex-basis:65%;">
+				<div id="meal-header">Breakfast</div>
+				<a href="{{ breakfast.recipe_url }}">
+					<div class="recipe-header">{{ breakfast.name }}</div>
+				</a>
+				<div id="indented">
+					<b>Calories</b>: {{ breakfast.calories }}<br>
+					{{ breakfast.protein }} g <b>Protein</b> / {{ breakfast.carbohydrates }} g <b>Carbs</b> /
+					{{ breakfast.fat }} g <b>Fat</b><br>
+					<img src="{{ breakfast.image }}" style="max-height: 250px">
+				</div>
+
+			</div>
+
+		</div>
+		<div class="cals" style="flex:1;margin-left: 81%;">
+
+			<span class="smalltxt" style="text-align:left;"> {{ person.printableGender }} / {{ person.age }}
+				years / {{ person.weight }} lbs / {{ person.height }} in /
+				{{ person.printableActivityLevel }}</span>
+			<div class="bignumber">{{ totalCalories }}</div>
+			<div class="subnumber">Reccomended calories</div>
+			<div class="bignumber">{{ mealCalories }}</div>
+			<div class="subnumber">Calories for this meal plan</div>
+
+			<!-- <div class="button" onClick="window.location.reload()">Shuffle Results!</div> -->
+			<!-- <form action="" method="GET"> -->
 			<!-- <input type="submit" value="Shuffle Meals! - (In progress!)" name="shuffleMeals"> -->
-		<!-- </form> -->
+			<!-- </form> -->
+
+		</div>
+
+		<div class="row2" style="margin-left: 28%;margin-top: -31%;">
+			<div class="inside" style="flex-basis:65%;">
+				<div id="meal-header">Lunch</div>
+				<a href="{{ breakfast.recipe_url }}">
+					<div class="recipe-header">{{ lunch.name }}</div>
+				</a>
+				<div id="indented">
+					<b>Calories</b>: {{ lunch.calories }}<br>
+					{{ lunch.protein }} g <b>Protein</b> / {{ lunch.carbs }} g <b>Carbs</b> / {{ lunch.fat }} g
+					<b>Fat</b><br>
+					<img src="{{ lunch.image }}" style="max-height: 250px">
+				</div>
+
+			</div>
+			<div class="inside" style="flex:1"></div>
+		</div>
+		<div class="row3" style="margin-top: -25%;margin-left: 57%;">
+			<div class="inside" style="flex-basis:65%;">
+				<div id="meal-header">Dinner</div>
+				<a href="{{ breakfast.recipe_url }}">
+					<div class="recipe-header">{{ dinner.name }}</div>
+				</a>
+				<div id="indented">
+					<b>Calories</b>: {{ dinner.calories }}<br>
+					{{ dinner.protein }} g <b>Protein</b> / {{ dinner.carbohydrates }} g <b>Carbs</b> / {{ dinner.fat }}
+					g <b>Fat</b><br>
+					<img src="{{ dinner.image }}" style="max-height: 250px">
+				</div>
+
+
+			</div>
+			<div class="inside" style="flex:1"></div>
+		</div>
+		<p>{{ calories }}</p>
+
+		{% endblock %}
+
 	</div>
-</div>
-</div>
 
-<div class="row">
-	<div class="inside" style="flex-basis:65%;">
-	<div id="meal-header">Lunch</div>
-	<a href="{{ breakfast.recipe_url }}"><div class="recipe-header">{{ lunch.name }}</div></a>
-	<div id="indented">
-		<b>Calories</b>: {{ lunch.calories }}<br>
-	{{ lunch.protein }} g <b>Protein</b> / {{ lunch.carbs }} g <b>Carbs</b> / {{ lunch.fat }} g <b>Fat</b><br>
-	<img src="{{ lunch.image }}" style="max-height: 250px">
-	</div>
 
-</div>
-<div class="inside" style="flex:1"></div>
-</div>
-<div class="row">
-	<div class="inside" style="flex-basis:65%;">
-	<div id="meal-header">Dinner</div>
-	<a href="{{ breakfast.recipe_url }}"><div class="recipe-header">{{ dinner.name }}</div></a>
-	<div id="indented">
-		<b>Calories</b>: {{ dinner.calories }}<br>
-	{{ dinner.protein }} g <b>Protein</b> / {{ dinner.carbohydrates }} g <b>Carbs</b> / {{ dinner.fat }} g <b>Fat</b><br>
-	<img src="{{ dinner.image }}" style="max-height: 250px">
-	</div>
-	
 
-</div>
-<div class="inside" style="flex:1"></div>
-</div>
-<p>{{ calories }}</p>
 
-{% endblock %}
+	<!-- Imported styles on this page -->
+	<link rel="stylesheet" href="{% static 'Website_all/assets/js/fullcalendar-2/fullcalendar.min.css' %}">
+
+	<!-- Bottom scripts (common) -->
+	<script src="{% static 'Website_all/assets/js/gsap/TweenMax.min.js' %}"></script>
+	<script src="{% static 'Website_all/assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js' %}"></script>
+	<script src="{% static 'Website_all/assets/js/bootstrap.js' %}"></script>
+	<script src="{% static 'Website_all/assets/js/joinable.js' %}"></script>
+	<script src="{% static 'Website_all/assets/js/resizeable.js' %}"></script>
+	<script src="{% static 'Website_all/assets/js/neon-api.js' %}"></script>
+
+	<!-- Imported scripts on this page -->
+	<script src="{% static 'Website_all/assets/js/moment.min.js' %}"></script>
+	<script src="{% static 'Website_all/assets/js/fullcalendar-2/fullcalendar.min.js' %}"></script>
+	<script src="{% static 'Website_all/assets/js/neon-calendar-2.js' %}"></script>
+	<script src="{% static 'Website_all/assets/js/neon-chat.js' %}"></script>
+
+
+	<!-- JavaScripts initializations and stuff -->
+	<script src="{% static 'Website_all/assets/js/neon-custom.js' %}"></script>
+
+
+
+
+</body>
+
+</html>
