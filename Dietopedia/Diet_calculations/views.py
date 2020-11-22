@@ -18,6 +18,7 @@ def BMR(request):
         user = request.user
         Gender= user.customers.Gender
         exer =request.POST['exercise']
+        print(exer)
         if height =='' :
             if weight =='':
                 if age =='':
@@ -43,7 +44,7 @@ def BMR(request):
                 user=request.user 
                 test=Calculations.objects.filter(user=user,fieldname="BMR")
                 user=request.user
-                addbdio= Calculations(user=user,BMR=bdiwithexercise,fieldname="BMR")
+                addbdio= Calculations(user=user,BMR=bdiwithexercise,fieldname="BMR",Exerciselvl=exer)
                 addbdio.save()
                 return render(request,"Diet_calculations/BMR.html",{'test':test})
                 
@@ -67,7 +68,7 @@ def BMR(request):
                 user=request.user 
                 test=Calculations.objects.filter(user=user,fieldname="BMR").last()
                 user=request.user
-                addbdio= Calculations(user=user,BMR=bdiwithexercise,fieldname="BMR")
+                addbdio= Calculations(user=user,BMR=bdiwithexercise,fieldname="BMR",Exerciselvl=exer)
                 addbdio.save() 
                 return render(request,"Diet_calculations/BMR.html",{"test":test})
            

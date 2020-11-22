@@ -7,6 +7,7 @@ from django.contrib.auth.models import User,Group
 from Dietician.models import Message
 from django.db.models import Q
 from django.core.paginator import Paginator
+
 # Create your views here.
 
 

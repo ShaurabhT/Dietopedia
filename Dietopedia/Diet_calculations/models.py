@@ -10,3 +10,4 @@ class Calculations(models.Model):
     fieldname=models.CharField(max_length=20)
     user=models.ForeignKey(User,on_delete=models.CASCADE,default=None)
     BDI=models.FloatField(default=None,null=True)
+    Exerciselvl=models.IntegerField(default=1)
