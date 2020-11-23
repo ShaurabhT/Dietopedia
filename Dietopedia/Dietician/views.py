@@ -32,7 +32,8 @@ def Inbox(request):
 	messages = Message.get_messages(user=request.user)
 	active_direct = None
 	directs = None
-	group=User.objects.filter(groups__name="Dietitians")
+	group_dietitian=User.objects.filter(groups__name="Dietitians")
+	group_customers=User.objects.filter(groups__name="Customers")
 	if messages:
 		message = messages[0]
 		active_direct = message['user'].username
@@ -46,7 +47,8 @@ def Inbox(request):
 		'directs': directs,
 		'messages': messages,
 		'active_direct': active_direct,
-		'groups':group,
+		'groups':group_dietitian,
+		'groupsC':group_customers
 		}
 
 	template = loader.get_template('direct.html')

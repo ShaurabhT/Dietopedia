@@ -73,7 +73,7 @@
 									<a href="BDI">
 										<p style="font-size: 440%;
 										color: white;
-										margin-left: -218%;" ,="">Dietopedia</p>
+										margin-left: -195%;" ,="">Dietopedia</p>
 									</a>
 								</div>
 
@@ -84,6 +84,7 @@
 									<a class="secondline" href="#">FILTERS</a>
 									
 									<a class="secondline" href="../Dietitian/inbox">Chat</a>
+									<a class="secondline" href="../foodresults">Shuffle Foods</a>
 								</div>
 
 							</div>
@@ -124,24 +125,9 @@
 			</div>
 
 		</div>
-		<div class="cals" style="flex:1;margin-left: 81%;">
+		
 
-			<span class="smalltxt" style="text-align:left;"> {{ person.printableGender }} / {{ person.age }}
-				years / {{ person.weight }} lbs / {{ person.height }} in /
-				{{ person.printableActivityLevel }}</span>
-			<div class="bignumber">{{ totalCalories }}</div>
-			<div class="subnumber">Reccomended calories</div>
-			<div class="bignumber">{{ mealCalories }}</div>
-			<div class="subnumber">Calories for this meal plan</div>
-
-			<!-- <div class="button" onClick="window.location.reload()">Shuffle Results!</div> -->
-			<!-- <form action="" method="GET"> -->
-			<!-- <input type="submit" value="Shuffle Meals! - (In progress!)" name="shuffleMeals"> -->
-			<!-- </form> -->
-
-		</div>
-
-		<div class="row2" style="margin-left: 28%;margin-top: -31%;">
+		<div class="row2" style="margin-left: 28%;margin-top: -25%;">
 			<div class="inside" style="flex-basis:65%;">
 				<div id="meal-header">Lunch</div>
 				<a href="{{ breakfast.recipe_url }}">
@@ -174,11 +160,29 @@
 			</div>
 			<div class="inside" style="flex:1"></div>
 		</div>
-		<p>{{ calories }}</p>
+		
 
-		{% endblock %}
+	
+	</div>
+	<div class="cals" style="flex:1;margin-left: 77%;margin-top: -30%;font-size: 0.6cm;width: 23%;">
+
+		<span class="smalltxt" style="text-align:left;"> {{ customer.Gender }} / {{ customer.Age }}
+			years / {{ person.weight }} lbs / {{ person.height }} in /
+			Exercise-lvl{{ exerciselvl }}</span>
+		<div class="bignumber">{{ totalCalories }}</div>
+		<div class="subnumber">Reccomended calories</div>
+		<div class="bignumber">{{ mealCalories }}</div>
+		<div class="subnumber">Calories for this meal plan</div>
+
+		<!-- <div class="button" onClick="window.location.reload()">Shuffle Results!</div> -->
+		<!-- <form action="" method="GET"> -->
+		<!-- <input type="submit" value="Shuffle Meals! - (In progress!)" name="shuffleMeals"> -->
+		<!-- </form> -->
 
 	</div>
+	<p>{{ calories }}</p>
+	{% endblock %}
+
 
 
 
