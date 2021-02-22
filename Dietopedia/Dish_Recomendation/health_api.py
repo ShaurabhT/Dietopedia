@@ -10,7 +10,7 @@ API_KEY = "84f014c706c1ea02fd6226da1078c53f"
 URL_BASE = 'https://api.edamam.com/diet?'
 #   https://api.edamam.com/diet?%3Fq=Apple&app_id=3b47c8ec&app_key=84f014c706c1ea02fd6226da1078c53f&to=150
 # https://api.edamam.com/diet?q=chicken&app_id=3b47c8ec&app_key=84f014c706c1ea02fd6226da1078c53f&from=0&to=3&health=alcohol-free
-Name_Food= "meals"
+Name_Food= "Nepali"
 def create_url():
     return URL_BASE + "&q=" + Name_Food + "&app_id=" + APP_ID + "&app_key=" + API_KEY + "&to=100"
     
