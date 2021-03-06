@@ -14,11 +14,11 @@ def BMR(request):
      if  request.method== 'POST':
         height =request.POST['height']
         weight=request.POST['weight']
-        age =request.POST['age']
+        user=request.user 
+        age =user.customers.Age
         user = request.user
         Gender= user.customers.Gender
         exer =request.POST['exercise']
-        print(exer)
         if height =='' :
             if weight =='':
                 if age =='':
