@@ -20,9 +20,10 @@ def BMR(request):
         Gender= user.customers.Gender
         exer =request.POST['exercise']
         if height =='' :
-            if weight =='':
-                if age =='':
-                 return render(request,"Diet_calculations/BMR.html")
+            if weight =='': 
+                user=request.user 
+                test=Calculations.objects.filter(user=user,fieldname="BMR").last()
+                return render(request,"Diet_calculations/BMR.html",{'test':test})
         else:
             if Gender == 'Male' :
                 bmr = 66 + ( 6.23 * float(weight)) + ( 12.7 *float(height)  ) - ( 6.8 * float(age)  )
@@ -41,11 +42,12 @@ def BMR(request):
                 elif (exer == '5'):
                     bdiwithexercise= bmr*1.9
 
-                user=request.user 
-                test=Calculations.objects.filter(user=user,fieldname="BMR")
+                
                 user=request.user
                 addbdio= Calculations(user=user,BMR=bdiwithexercise,fieldname="BMR",Exerciselvl=exer)
                 addbdio.save()
+                user=request.user 
+                test=Calculations.objects.filter(user=user,fieldname="BMR").last()
                 return render(request,"Diet_calculations/BMR.html",{'test':test})
                 
             else:
@@ -64,19 +66,18 @@ def BMR(request):
                             
                 elif (exer== '5'):
                     bdiwithexercise= bmr*1.9
-                
-                user=request.user 
-                test=Calculations.objects.filter(user=user,fieldname="BMR").last()
                 user=request.user
                 addbdio= Calculations(user=user,BMR=bdiwithexercise,fieldname="BMR",Exerciselvl=exer)
                 addbdio.save() 
+                user=request.user 
+                test=Calculations.objects.filter(user=user,fieldname="BMR").last()
+                print(test)
                 return render(request,"Diet_calculations/BMR.html",{"test":test})
            
-
-             
+  
      else:
         user=request.user 
-        test=Calculations.objects.filter(user=user,fieldname="BMR").last()
+        test=Calculations.objects.filter(user=user,fieldname="BMR").last()      
         return render(request,"Diet_calculations/BMR.html",{"test":test})
 
          
