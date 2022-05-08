@@ -6,6 +6,15 @@ FULFILLMENT OF THE REQUIREMENTS FOR THE DEGREE OF
 BACHELOR IN ELECTRONICS AND COMMUNICATION
 ENGINEERING
 
+Balanced diet, an essential factor to a healthy life yet an underachieved goal
+globally. This project deals with developing an website that helps its customers
+to plan a balanced diet according to their daily necessity and recommending food
+products according to required calories on a daily basis. Although there are few
+existing websites providing services regarding vegetable supplies. But there services
+are more focused on supplying the vegetables whereas our goal is to establish an
+awareness amongst people of what they eat, set up a calorie goal according to their
+necessity and their economic status. In order to help people plan dish according to
+their calorie goals, we provide them with a list of dishes with total calories.
 
 
 Dietopedia is a website that helps its users to plan their daily meal based on the
@@ -28,4 +37,7 @@ This research work is conducted in order to:
 
 • Provide consumers instant access and a quicker purchase to healthier meal
 plan with a medium to show calories intake
+
+
+~Shaurabh R. Tuladhar
 
