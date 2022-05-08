@@ -20,8 +20,10 @@ calculation for a person to consume in a daily life but the foods calories they 
 isn’t quiet suitable for us due to difference in lifestyle. And we haven’t encountered
 any website that’s based in Nepal and serves our very purpose.
 
-Objectives
+Objectives:
+
 This research work is conducted in order to:
+
 • To build the clean responsive website
 • Provide consumers instant access and a quicker purchase to healthier meal
 plan with a medium to show calories intake
